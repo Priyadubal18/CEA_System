@@ -1,0 +1,129 @@
+﻿@model IEnumerable<CEA_System.Models.Review>
+@using CEA_System.Models;
+
+@{
+    ViewBag.Title = "Review";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h2>Review</h2>
+<style>
+    .red
+    {
+         background-color:brown;
+         font-size:20px;
+         text-align:justify;
+         width:10px;
+         font-weight:600;
+          
+         
+    }
+
+    .schoolname
+    {
+         background-color:white;
+         color:black;
+         font-size:18px;
+         text-align:justify;
+         width:500px;
+         font-weight:600;
+         border:solid;
+    }
+</style>
+
+@using (Html.BeginForm("Review", "Home", FormMethod.Post, new { id = "Review" }))
+{ 
+   @Html.AntiForgeryToken()
+  
+    <div class="row control-group">
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+         Select the School Name
+        <p class="help-block text-danger"></p>
+        
+        <select style="color:blue;" name="SchoolName" id="schoolname" >
+    
+    @foreach (var item in ViewData["SchoolName"] as List<SchoolData>)
+    {
+       
+       <option value="@item.SchoolName">@item.SchoolName</option>
+ 
+
+    }
+    <br />
+    <br />
+   </select>
+
+        </div>
+        </div>
+    <center><p>Submit Review</p></center>    
+    <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Review</label>
+                                 <textarea  maxlength="200" class="form-control" name="Review1"   style="height:75px;font-size:18px;" placeholder="Please enter your review" id="Review1" >
+                                                               
+                                </textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+   
+    
+    
+    <br />
+    <br />
+    <br />
+    <br />
+    
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                               <center>
+                                     <button id="reviewbtn" type="submit" class="btn btn-primary btn-medium">Submit Review</button>
+                                </center>
+                               
+                            </div>
+                        </div>
+    
+
+}
+    
+       
+<script src="../startbootstrap-freelancer-1.0.4/js/jquery.js"></script>              
+
+
+
+@if (Model != null) {
+   <center> <p style ="font-size:20px;">Students Reviews!!</p> </center>
+<center>
+<table border ="1" style:"border:1px solid black;border-collapse: collapse;">
+    <tr class ="red">
+        <th style="padding:0 15px 0 15px;">
+           School Name
+        </th>
+        <th></th>
+        <th style="padding:0 15px 0 15px;">
+            Review
+        </th>
+        <th style="padding:0 15px 0 15px;">
+           Student Name
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="schoolname">
+        <td colspan="2" style="padding:0 15px 0 15px;">
+            @Html.DisplayFor(modelItem => item.SchoolName)
+        </td>
+        <td style="padding:0 15px 0 15px;">
+            @Html.DisplayFor(modelItem => item.Review1)
+        </td>
+        <td colspan="2" style="padding:0 15px 0 15px;">
+            @Html.DisplayFor(modelItem => item.Studentname)
+        </td>
+        
+    </tr>
+}
+
+</table>
+</center>
+
+}

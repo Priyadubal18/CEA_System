@@ -1,0 +1,778 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TestModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TestModelStoreContainer">
+          <EntitySet Name="AcademicInfo" EntityType="TestModel.Store.AcademicInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AddressStudent" EntityType="TestModel.Store.AddressStudent" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ApplyCollege" EntityType="TestModel.Store.ApplyCollege" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CitizenShipInfo" EntityType="TestModel.Store.CitizenShipInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ContactMe" EntityType="TestModel.Store.ContactMe" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ExamInfo" EntityType="TestModel.Store.ExamInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PreviousSchoolInfo" EntityType="TestModel.Store.PreviousSchoolInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Review" EntityType="TestModel.Store.Review" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SchoolData" EntityType="TestModel.Store.SchoolData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Student_Profile" EntityType="TestModel.Store.Student_Profile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SupportingDoc" EntityType="TestModel.Store.SupportingDoc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WorkInfo" EntityType="TestModel.Store.WorkInfo" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AcademicInfo_Student_Profile" Association="TestModel.Store.FK_AcademicInfo_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="AcademicInfo" EntitySet="AcademicInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddressStudent_Student_Profile" Association="TestModel.Store.FK_AddressStudent_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="AddressStudent" EntitySet="AddressStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitizenShipInfo_Student_Profile" Association="TestModel.Store.FK_CitizenShipInfo_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="CitizenShipInfo" EntitySet="CitizenShipInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamInfo_Student_Profile" Association="TestModel.Store.FK_ExamInfo_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="ExamInfo" EntitySet="ExamInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreviousSchoolInfo_Student_Profile" Association="TestModel.Store.FK_PreviousSchoolInfo_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="PreviousSchoolInfo" EntitySet="PreviousSchoolInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupportingDoc_Student_Profile" Association="TestModel.Store.FK_SupportingDoc_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="SupportingDoc" EntitySet="SupportingDoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkIInfo_Student_Profile" Association="TestModel.Store.FK_WorkIInfo_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="WorkInfo" EntitySet="WorkInfo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AcademicInfo">
+          <Key>
+            <PropertyRef Name="AcademicId" />
+          </Key>
+          <Property Name="AcademicId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="AdmissionType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Semester" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApplicationYear" Type="nvarchar" MaxLength="50" />
+          <Property Name="Major" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AddressStudent">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AptStreet" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="9" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentId" Type="int" />
+        </EntityType>
+        <EntityType Name="ApplyCollege">
+          <Key>
+            <PropertyRef Name="ApplyCollegeId" />
+          </Key>
+          <Property Name="ApplyCollegeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SchoolName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Semester" Type="nvarchar" MaxLength="50" />
+          <Property Name="CourseApplied" Type="nvarchar" MaxLength="50" />
+          <Property Name="CollegeEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateApplied" Type="date" />
+          <Property Name="StudentId" Type="int" />
+        </EntityType>
+        <EntityType Name="CitizenShipInfo">
+          <Key>
+            <PropertyRef Name="CitizenshipId" />
+          </Key>
+          <Property Name="CitizenshipId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="CountryOfCitizenship" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ethnicity" Type="nvarchar" MaxLength="50" />
+          <Property Name="I20Required" Type="nvarchar" MaxLength="50" />
+          <Property Name="VisaStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="CurrentLocation" Type="nvarchar" MaxLength="50" />
+          <Property Name="VeteranStatus" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ContactMe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="ExamInfo">
+          <Key>
+            <PropertyRef Name="ExamId" />
+          </Key>
+          <Property Name="ExamId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ExamType" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfExam" Type="date" />
+          <Property Name="Score" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentId" Type="int" />
+        </EntityType>
+        <EntityType Name="PreviousSchoolInfo">
+          <Key>
+            <PropertyRef Name="SchoolInfoId" />
+          </Key>
+          <Property Name="SchoolInfoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="DateFrom" Type="date" />
+          <Property Name="DateTo" Type="date" />
+          <Property Name="DegreeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Major" Type="nvarchar" MaxLength="50" />
+          <Property Name="SchoolName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SchoolName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Review" Type="nvarchar" MaxLength="300" />
+          <Property Name="Studentname" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SchoolData">
+          <Key>
+            <PropertyRef Name="SchoolId" />
+          </Key>
+          <Property Name="SchoolId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AddressSchool" Type="nvarchar" MaxLength="150" />
+          <Property Name="City" Type="nvarchar" MaxLength="20" />
+          <Property Name="SchoolCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="WebSite" Type="nvarchar" MaxLength="50" />
+          <Property Name="SchoolType" Type="nvarchar" MaxLength="50" />
+          <Property Name="TutionFee" Type="nvarchar" MaxLength="50" />
+          <Property Name="GraduateRate" Type="nvarchar" MaxLength="10" />
+          <Property Name="RetentionRate" Type="nvarchar" MaxLength="10" />
+          <Property Name="BestProgram" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReviewLink" Type="nvarchar" MaxLength="60" />
+          <Property Name="AcceptanceRate" Type="nvarchar" MaxLength="10" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="150" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="CourseAvailable" Type="nvarchar(max)" />
+          <Property Name="SchoolName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Student_Profile">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="SSN" Type="nvarchar" MaxLength="10" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryofBirth" Type="nvarchar" MaxLength="50" />
+          <Property Name="Filefordelete" Type="varchar" MaxLength="100" />
+          <Property Name="totalFileSize" Type="int" />
+        </EntityType>
+        <EntityType Name="SupportingDoc">
+          <Key>
+            <PropertyRef Name="SupportingDocId" />
+          </Key>
+          <Property Name="SupportingDocId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TypeofDoc" Type="nvarchar" MaxLength="200" />
+          <Property Name="ServerURL" Type="nvarchar" MaxLength="200" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="filecontent" Type="varbinary(max)" />
+          <Property Name="filelength" Type="varchar" MaxLength="50" />
+          <Property Name="mimeType" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="WorkInfo">
+          <Key>
+            <PropertyRef Name="WorkInfoId" />
+          </Key>
+          <Property Name="WorkInfoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FromDate" Type="date" />
+          <Property Name="ToDate" Type="date" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Achievement" Type="nvarchar" MaxLength="200" />
+          <Property Name="StudentId" Type="int" />
+        </EntityType>
+        <Association Name="FK_AcademicInfo_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Store.Student_Profile" Multiplicity="1" />
+          <End Role="AcademicInfo" Type="TestModel.Store.AcademicInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="AcademicInfo">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddressStudent_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Store.Student_Profile" Multiplicity="0..1" />
+          <End Role="AddressStudent" Type="TestModel.Store.AddressStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="AddressStudent">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitizenShipInfo_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Store.Student_Profile" Multiplicity="1" />
+          <End Role="CitizenShipInfo" Type="TestModel.Store.CitizenShipInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="CitizenShipInfo">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamInfo_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Store.Student_Profile" Multiplicity="0..1" />
+          <End Role="ExamInfo" Type="TestModel.Store.ExamInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="ExamInfo">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreviousSchoolInfo_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Store.Student_Profile" Multiplicity="1" />
+          <End Role="PreviousSchoolInfo" Type="TestModel.Store.PreviousSchoolInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="PreviousSchoolInfo">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupportingDoc_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Store.Student_Profile" Multiplicity="0..1" />
+          <End Role="SupportingDoc" Type="TestModel.Store.SupportingDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="SupportingDoc">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkIInfo_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Store.Student_Profile" Multiplicity="0..1" />
+          <End Role="WorkInfo" Type="TestModel.Store.WorkInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="WorkInfo">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CEAEntities2" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="AcademicInfoes" EntityType="TestModel.AcademicInfo" />
+          <EntitySet Name="AddressStudents" EntityType="TestModel.AddressStudent" />
+          <EntitySet Name="ApplyColleges" EntityType="TestModel.ApplyCollege" />
+          <EntitySet Name="CitizenShipInfoes" EntityType="TestModel.CitizenShipInfo" />
+          <EntitySet Name="ContactMes" EntityType="TestModel.ContactMe" />
+          <EntitySet Name="ExamInfoes" EntityType="TestModel.ExamInfo" />
+          <EntitySet Name="PreviousSchoolInfoes" EntityType="TestModel.PreviousSchoolInfo" />
+          <EntitySet Name="Reviews" EntityType="TestModel.Review" />
+          <EntitySet Name="SchoolDatas" EntityType="TestModel.SchoolData" />
+          <EntitySet Name="Student_Profile" EntityType="TestModel.Student_Profile" />
+          <EntitySet Name="SupportingDocs" EntityType="TestModel.SupportingDoc" />
+          <EntitySet Name="WorkInfoes" EntityType="TestModel.WorkInfo" />
+          <AssociationSet Name="FK_AcademicInfo_Student_Profile" Association="TestModel.FK_AcademicInfo_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="AcademicInfo" EntitySet="AcademicInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddressStudent_Student_Profile" Association="TestModel.FK_AddressStudent_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="AddressStudent" EntitySet="AddressStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitizenShipInfo_Student_Profile" Association="TestModel.FK_CitizenShipInfo_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="CitizenShipInfo" EntitySet="CitizenShipInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamInfo_Student_Profile" Association="TestModel.FK_ExamInfo_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="ExamInfo" EntitySet="ExamInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreviousSchoolInfo_Student_Profile" Association="TestModel.FK_PreviousSchoolInfo_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="PreviousSchoolInfo" EntitySet="PreviousSchoolInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupportingDoc_Student_Profile" Association="TestModel.FK_SupportingDoc_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="SupportingDoc" EntitySet="SupportingDocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkIInfo_Student_Profile" Association="TestModel.FK_WorkIInfo_Student_Profile">
+            <End Role="Student_Profile" EntitySet="Student_Profile" />
+            <End Role="WorkInfo" EntitySet="WorkInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AcademicInfo">
+          <Key>
+            <PropertyRef Name="AcademicId" />
+          </Key>
+          <Property Name="AcademicId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="AdmissionType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Semester" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ApplicationYear" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Major" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Student_Profile" Relationship="TestModel.FK_AcademicInfo_Student_Profile" FromRole="AcademicInfo" ToRole="Student_Profile" />
+        </EntityType>
+        <EntityType Name="AddressStudent">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AptStreet" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="9" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="StudentId" Type="Int32" />
+          <NavigationProperty Name="Student_Profile" Relationship="TestModel.FK_AddressStudent_Student_Profile" FromRole="AddressStudent" ToRole="Student_Profile" />
+        </EntityType>
+        <EntityType Name="ApplyCollege">
+          <Key>
+            <PropertyRef Name="ApplyCollegeId" />
+          </Key>
+          <Property Name="ApplyCollegeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SchoolName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Semester" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CourseApplied" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CollegeEmail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DateApplied" Type="DateTime" Precision="0" />
+          <Property Name="StudentId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CitizenShipInfo">
+          <Key>
+            <PropertyRef Name="CitizenshipId" />
+          </Key>
+          <Property Name="CitizenshipId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="CountryOfCitizenship" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Ethnicity" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="I20Required" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="VisaStatus" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CurrentLocation" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="VeteranStatus" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Student_Profile" Relationship="TestModel.FK_CitizenShipInfo_Student_Profile" FromRole="CitizenShipInfo" ToRole="Student_Profile" />
+        </EntityType>
+        <EntityType Name="ContactMe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Message" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ExamInfo">
+          <Key>
+            <PropertyRef Name="ExamId" />
+          </Key>
+          <Property Name="ExamId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DateOfExam" Type="DateTime" Precision="0" />
+          <Property Name="Score" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="StudentId" Type="Int32" />
+          <NavigationProperty Name="Student_Profile" Relationship="TestModel.FK_ExamInfo_Student_Profile" FromRole="ExamInfo" ToRole="Student_Profile" />
+        </EntityType>
+        <EntityType Name="PreviousSchoolInfo">
+          <Key>
+            <PropertyRef Name="SchoolInfoId" />
+          </Key>
+          <Property Name="SchoolInfoId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="DateFrom" Type="DateTime" Precision="0" />
+          <Property Name="DateTo" Type="DateTime" Precision="0" />
+          <Property Name="DegreeName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Major" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SchoolName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Student_Profile" Relationship="TestModel.FK_PreviousSchoolInfo_Student_Profile" FromRole="PreviousSchoolInfo" ToRole="Student_Profile" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SchoolName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Review1" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Studentname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SchoolData">
+          <Key>
+            <PropertyRef Name="SchoolId" />
+          </Key>
+          <Property Name="SchoolId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressSchool" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="SchoolCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="WebSite" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SchoolType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="TutionFee" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="GraduateRate" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="RetentionRate" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="BestProgram" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ReviewLink" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+          <Property Name="AcceptanceRate" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Comment" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CourseAvailable" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SchoolName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Student_Profile">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="SSN" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CountryofBirth" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Filefordelete" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="totalFileSize" Type="Int32" />
+          <NavigationProperty Name="AcademicInfoes" Relationship="TestModel.FK_AcademicInfo_Student_Profile" FromRole="Student_Profile" ToRole="AcademicInfo" />
+          <NavigationProperty Name="AddressStudents" Relationship="TestModel.FK_AddressStudent_Student_Profile" FromRole="Student_Profile" ToRole="AddressStudent" />
+          <NavigationProperty Name="CitizenShipInfoes" Relationship="TestModel.FK_CitizenShipInfo_Student_Profile" FromRole="Student_Profile" ToRole="CitizenShipInfo" />
+          <NavigationProperty Name="ExamInfoes" Relationship="TestModel.FK_ExamInfo_Student_Profile" FromRole="Student_Profile" ToRole="ExamInfo" />
+          <NavigationProperty Name="PreviousSchoolInfoes" Relationship="TestModel.FK_PreviousSchoolInfo_Student_Profile" FromRole="Student_Profile" ToRole="PreviousSchoolInfo" />
+          <NavigationProperty Name="SupportingDocs" Relationship="TestModel.FK_SupportingDoc_Student_Profile" FromRole="Student_Profile" ToRole="SupportingDoc" />
+          <NavigationProperty Name="WorkInfoes" Relationship="TestModel.FK_WorkIInfo_Student_Profile" FromRole="Student_Profile" ToRole="WorkInfo" />
+        </EntityType>
+        <EntityType Name="SupportingDoc">
+          <Key>
+            <PropertyRef Name="SupportingDocId" />
+          </Key>
+          <Property Name="SupportingDocId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeofDoc" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="ServerURL" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="filecontent" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="filelength" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="mimeType" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Student_Profile" Relationship="TestModel.FK_SupportingDoc_Student_Profile" FromRole="SupportingDoc" ToRole="Student_Profile" />
+        </EntityType>
+        <EntityType Name="WorkInfo">
+          <Key>
+            <PropertyRef Name="WorkInfoId" />
+          </Key>
+          <Property Name="WorkInfoId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FromDate" Type="DateTime" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Achievement" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="StudentId" Type="Int32" />
+          <NavigationProperty Name="Student_Profile" Relationship="TestModel.FK_WorkIInfo_Student_Profile" FromRole="WorkInfo" ToRole="Student_Profile" />
+        </EntityType>
+        <Association Name="FK_AcademicInfo_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Student_Profile" Multiplicity="1" />
+          <End Role="AcademicInfo" Type="TestModel.AcademicInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="AcademicInfo">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddressStudent_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Student_Profile" Multiplicity="0..1" />
+          <End Role="AddressStudent" Type="TestModel.AddressStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="AddressStudent">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitizenShipInfo_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Student_Profile" Multiplicity="1" />
+          <End Role="CitizenShipInfo" Type="TestModel.CitizenShipInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="CitizenShipInfo">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamInfo_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Student_Profile" Multiplicity="0..1" />
+          <End Role="ExamInfo" Type="TestModel.ExamInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="ExamInfo">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreviousSchoolInfo_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Student_Profile" Multiplicity="1" />
+          <End Role="PreviousSchoolInfo" Type="TestModel.PreviousSchoolInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="PreviousSchoolInfo">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupportingDoc_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Student_Profile" Multiplicity="0..1" />
+          <End Role="SupportingDoc" Type="TestModel.SupportingDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="SupportingDoc">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkIInfo_Student_Profile">
+          <End Role="Student_Profile" Type="TestModel.Student_Profile" Multiplicity="0..1" />
+          <End Role="WorkInfo" Type="TestModel.WorkInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Profile">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="WorkInfo">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TestModelStoreContainer" CdmEntityContainer="CEAEntities2">
+          <EntitySetMapping Name="AcademicInfoes">
+            <EntityTypeMapping TypeName="TestModel.AcademicInfo">
+              <MappingFragment StoreEntitySet="AcademicInfo">
+                <ScalarProperty Name="AcademicId" ColumnName="AcademicId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="AdmissionType" ColumnName="AdmissionType" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="ApplicationYear" ColumnName="ApplicationYear" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressStudents">
+            <EntityTypeMapping TypeName="TestModel.AddressStudent">
+              <MappingFragment StoreEntitySet="AddressStudent">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="AptStreet" ColumnName="AptStreet" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplyColleges">
+            <EntityTypeMapping TypeName="TestModel.ApplyCollege">
+              <MappingFragment StoreEntitySet="ApplyCollege">
+                <ScalarProperty Name="ApplyCollegeId" ColumnName="ApplyCollegeId" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="CourseApplied" ColumnName="CourseApplied" />
+                <ScalarProperty Name="CollegeEmail" ColumnName="CollegeEmail" />
+                <ScalarProperty Name="DateApplied" ColumnName="DateApplied" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CitizenShipInfoes">
+            <EntityTypeMapping TypeName="TestModel.CitizenShipInfo">
+              <MappingFragment StoreEntitySet="CitizenShipInfo">
+                <ScalarProperty Name="CitizenshipId" ColumnName="CitizenshipId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CountryOfCitizenship" ColumnName="CountryOfCitizenship" />
+                <ScalarProperty Name="Ethnicity" ColumnName="Ethnicity" />
+                <ScalarProperty Name="I20Required" ColumnName="I20Required" />
+                <ScalarProperty Name="VisaStatus" ColumnName="VisaStatus" />
+                <ScalarProperty Name="CurrentLocation" ColumnName="CurrentLocation" />
+                <ScalarProperty Name="VeteranStatus" ColumnName="VeteranStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactMes">
+            <EntityTypeMapping TypeName="TestModel.ContactMe">
+              <MappingFragment StoreEntitySet="ContactMe">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamInfoes">
+            <EntityTypeMapping TypeName="TestModel.ExamInfo">
+              <MappingFragment StoreEntitySet="ExamInfo">
+                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+                <ScalarProperty Name="ExamType" ColumnName="ExamType" />
+                <ScalarProperty Name="DateOfExam" ColumnName="DateOfExam" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreviousSchoolInfoes">
+            <EntityTypeMapping TypeName="TestModel.PreviousSchoolInfo">
+              <MappingFragment StoreEntitySet="PreviousSchoolInfo">
+                <ScalarProperty Name="SchoolInfoId" ColumnName="SchoolInfoId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+                <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+                <ScalarProperty Name="DegreeName" ColumnName="DegreeName" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="TestModel.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="Review1" ColumnName="Review" />
+                <ScalarProperty Name="Studentname" ColumnName="Studentname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SchoolDatas">
+            <EntityTypeMapping TypeName="TestModel.SchoolData">
+              <MappingFragment StoreEntitySet="SchoolData">
+                <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+                <ScalarProperty Name="AddressSchool" ColumnName="AddressSchool" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="SchoolCode" ColumnName="SchoolCode" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="SchoolType" ColumnName="SchoolType" />
+                <ScalarProperty Name="TutionFee" ColumnName="TutionFee" />
+                <ScalarProperty Name="GraduateRate" ColumnName="GraduateRate" />
+                <ScalarProperty Name="RetentionRate" ColumnName="RetentionRate" />
+                <ScalarProperty Name="BestProgram" ColumnName="BestProgram" />
+                <ScalarProperty Name="ReviewLink" ColumnName="ReviewLink" />
+                <ScalarProperty Name="AcceptanceRate" ColumnName="AcceptanceRate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="CourseAvailable" ColumnName="CourseAvailable" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student_Profile">
+            <EntityTypeMapping TypeName="TestModel.Student_Profile">
+              <MappingFragment StoreEntitySet="Student_Profile">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CountryofBirth" ColumnName="CountryofBirth" />
+                <ScalarProperty Name="Filefordelete" ColumnName="Filefordelete" />
+                <ScalarProperty Name="totalFileSize" ColumnName="totalFileSize" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupportingDocs">
+            <EntityTypeMapping TypeName="TestModel.SupportingDoc">
+              <MappingFragment StoreEntitySet="SupportingDoc">
+                <ScalarProperty Name="SupportingDocId" ColumnName="SupportingDocId" />
+                <ScalarProperty Name="TypeofDoc" ColumnName="TypeofDoc" />
+                <ScalarProperty Name="ServerURL" ColumnName="ServerURL" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="filecontent" ColumnName="filecontent" />
+                <ScalarProperty Name="filelength" ColumnName="filelength" />
+                <ScalarProperty Name="mimeType" ColumnName="mimeType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkInfoes">
+            <EntityTypeMapping TypeName="TestModel.WorkInfo">
+              <MappingFragment StoreEntitySet="WorkInfo">
+                <ScalarProperty Name="WorkInfoId" ColumnName="WorkInfoId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Achievement" ColumnName="Achievement" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

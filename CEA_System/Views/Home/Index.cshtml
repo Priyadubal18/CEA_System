@@ -1,0 +1,662 @@
+﻿@{
+        Layout = "~/Views/Shared/_InnerLayout.cshtml";
+        }
+
+<!DOCTYPE html>
+<html lang="en">
+    
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CEA Portal</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+   @* <a href="~/Views/Home/Index.cshtml">~/Views/Home/Index.cshtml</a>*@
+   
+@*     <link href="css/bootstrap.min.css" rel="stylesheet">*@
+ <link href="startbootstrap-freelancer-1.0.4/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    @*<link href="css/freelancer.css" rel="stylesheet">*@
+<link href="startbootstrap-freelancer-1.0.4/css/freelancer.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+@*    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">*@
+ <link href="startbootstrap-freelancer-1.0.4/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+  f     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="index">
+    
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">Start CEA</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                   
+                     <li class="page-scroll">
+                        <a href="#page-top">Home</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About Us</a>
+                    </li>
+                          <li class="page-scroll">
+                        <a href="#register">Register</a>
+                    </li>
+                     <li class="page-scroll">
+                        <a href="#login">Login</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img src="../../startbootstrap-freelancer-1.0.4/img/portfolio/LOGO.jpg" width="256px" style="margin-top:-120px;" alt="" />
+              @*  <img src="../../startbootstrap-freelancer-1.0.4/img/profile.png" alt="" />*@
+                    <div class="intro-text">
+                        <span class="name" style="font-size:50px;">Centralized E-Student Admission System </span>
+                        <hr class="star-light">
+                        <span class="skills">Your School. Your Decision. Your Future</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="success" id="about" >
+        <div class="container" style="margin-top:20px;">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About Us</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+<p style="text-align:justify">The proposed Centralize E-Student Admissions System intends to be a single platform for students to pursue higher education to further their career goals. This is an online application which will gather the student’s personal and educational data and help the students to compare between the selected schools. Additionally it will assist the students to submit the admission application online to the chosen schools.</p>
+                </div>
+
+                <div class="col-lg-4">
+                   <p style="text-align:justify">Currently, a student needs to individually visit a particular school’s website to gather useful information about the schools. This is a very time consuming process. Furthermore, the students need apply separately by filling out the similar kind of forms for various schools and courses. This application will helps to reduce time consumption for collecting the school information as well as filling out the same kind of admission applications. </p>
+                </div>
+                
+              
+                @*<div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="#" class="btn btn-lg btn-outline">
+                        <i class="fa fa-download"></i> Download Theme
+                    </a>
+                </div>*@
+            </div>
+        </div>
+    </section>
+     <!-- Register Section -->
+      <section  class="success"  id="register">
+        <div class="container" style="margin-top:20px;">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Register Me</h2>
+                 @*   <hr class="star-primary">*@ <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div>
+                    <b> <center style =" color:red"> @ViewBag.RegisterMsg  </center></b> <br /> <br /><br />
+                   </div>
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "registerForm" })) 
+                     {
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" name="fname" style="height:25px;font-size:18px;" placeholder="First Name" id="fname" required data-validation-required-message="Please enter your first name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                            <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" name="lname"style="height:25px;font-size:18px;" placeholder="Last Name" id="lname" required data-validation-required-message="Please enter your last name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" name="email" style="height:25px;font-size:18px;" placeholder="Email Address" id="email"  required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group"> 
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Password</label>
+                                <input type="password" pattern=".{8,8}" maxlength="8" required title="Password should be 8 characters only"  class="form-control" name="password" style="height:25px;font-size:18px;" placeholder="Password" id="password" data-validation-required-message="Please enter your password.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Confirm Password</label>
+                               
+                                 <input type="password" pattern=".{8,8}" maxlength="8" required title="Password should be 8 characters only" class="form-control" style="height:25px;font-size:18px;"placeholder="Confirm Password"id="conpassword" data-validation-required-message="Please enter your confirm password.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <center>
+                                     <button id="registerbtn" type="submit" class="btn btn-primary btn-medium">Register</button>
+                                </center>
+                               
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    
+     <!-- Login Section -->
+      <section id="login" class="success">
+        <div class="container" style="margin-top:20px;" >
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Login Me</h2>
+                @*    <hr class="star-primary"> *@<hr class="star-light">
+                     
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div>
+                    <b> <center style =" color:red"> @ViewBag.LoginMsg  </center></b> <br /> <br /><br />
+                   </div>
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                   @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { id = "LoginForm" })) 
+                     {
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>User Name</label>
+                                 <input type="email" class="form-control" style="height:25px;font-size:18px;" placeholder="User Name:john@email.com"  name="username" id="username" required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                          
+                    
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Password</label>
+                                <input type="password" class="form-control" style="height:25px;font-size:18px;" placeholder="Password"   name="loginpassword" id="loginpassword" required data-validation-required-message="Please enter your password.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                     
+                        @* <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">*@
+
+                                <center style="margin-top:20px;"> <u><a  id="forgotlink" href="#forgotpassowrd" style="color:darkblue; font-size:20px;">Forgot Password</a></u>
+                                    </center>
+                                @*</div>
+                                </div>*@
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <center>
+                                     <button  id="loginbtn" type="submit" class="btn btn-primary btn-medium">Login</button>
+                                </center>
+                               
+                            </div>
+                        </div>
+                   }
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="success">
+        <div class="container" style="margin-top:20px;">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Contact Me</h2>
+                   <hr class="star-light">
+                     
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div>
+                    <b> <center style =" color:red"> @ViewBag.ContactMsg </center></b> <br /> <br /><br />
+                   </div>
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                   @using (Html.BeginForm("ContactMe", "Home", FormMethod.Post, new { id = "ContactMe" })) 
+                     {
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Name</label>
+                                <input type="text" class="form-control" name="fullname" style="height:25px;font-size:18px;" placeholder="Name" id="fullname" required data-validation-required-message="Please enter your full name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" name="senderemail" style="height:25px;font-size:18px;" placeholder="Email Address" id="senderemail" required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        
+                                          
+                             <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Message</label>
+                                <textarea rows="2" class="form-control" maxlength="150" name="message" style="font-size:18px;" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                              <Center> <button type="submit"  id="contactbtn "class="btn btn-primary btn-medium">Send</button> </Center>
+                            </div>
+                        </div>
+                   }
+                </div>
+            </div>
+        </div>
+    </section>
+      <!-- Forgot Password -->
+     <section  class="success"  id="forgotpassowrd">
+        <div class="container" style="margin-top:20px;">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Forgot Password</h2>
+                 @*   <hr class="star-primary">*@ <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                   @using (Html.BeginForm("ForgotPassword", "Home", FormMethod.Post)) 
+                     {
+                       
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" 
+                                    style="height:25px;font-size:18px;"
+                                     placeholder="Email Address" 
+                                    id="forgotemail"
+                                    name="forgotemail"
+                                     required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <center>
+                                     <button  id="forgotbtn" type="submit" class="btn btn-primary btn-medium">Submit</button>
+                                </center>
+                               
+                            </div>
+                        </div>
+                   }
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+   
+    
+       
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll visible-xs visible-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/cabin.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/cake.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/circus.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/game.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/safe.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/submarine.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+   @* <script src="js/jquery.js"></script>*@
+    <script src="startbootstrap-freelancer-1.0.4/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    @*<script src="js/bootstrap.min.js"></script>*@
+<script src="startbootstrap-freelancer-1.0.4/js/bootstrap.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="startbootstrap-freelancer-1.0.4/js/classie.js"></script>
+    @*<script src="js/classie.js"></script>*@
+   @* <script src="js/cbpAnimatedHeader.js"></script>*@
+    <script src="startbootstrap-freelancer-1.0.4/js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="startbootstrap-freelancer-1.0.4/js/jqBootstrapValidation.js"></script>
+    <script src="startbootstrap-freelancer-1.0.4/js/contact_me.js"></script>
+    @*<script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>*@
+<script src="startbootstrap-freelancer-1.0.4/js/freelancer.js"></script>
+    <!-- Custom Theme JavaScript -->
+    @*<script src="js/freelancer.js"></script>*@
+
+</body>
+    <script>
+        $(document).ready(function () {
+          
+                $("#forgotpassowrd").hide();
+            
+                $("#forgotlink").click(function () {
+                $("#forgotpassowrd").show();
+                });
+                           
+                $("#forgotbtn").click(function () {
+                    $("#forgotpassowrd").hide();
+                });
+
+
+
+                //registerbtn password conpassword
+
+                $("#registerbtn").click(function () {
+
+                    var password = $("#password").val();
+                    var email = $("#email").val();
+                    var email1 = email.substring(0, 8);
+                    if (password == email1) {
+                        alert("Password should not match Username");
+                        return false;
+                    }
+
+                    var confirmpassword = $("#conpassword").val();
+                    if (password !== confirmpassword) {
+
+                        alert("Please enter the same password");
+                        return false;
+                    }
+                   
+                    
+                });
+        });
+
+
+         
+    </script>
+    
+</html>

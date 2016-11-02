@@ -1,0 +1,166 @@
+﻿@model CEA_System.Models.ApplyCollege
+@using CEA_System.Models;
+@{
+    ViewBag.Title = "ApplyCollege";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+    ViewBag.Title = "ApplyCollege";
+    
+    
+}
+
+<h2>Apply To College</h2>
+<br />
+<br />
+<br />
+<br />
+<u>
+<b> Please fill below Application Form </b> 
+    </u>
+<br />
+<br />
+<br />
+<br />
+  
+
+@using (Html.BeginForm("ApplyCollege", "Home", FormMethod.Post, new { id = "ApplyCollegeForm" }))
+{ 
+   @Html.AntiForgeryToken()
+    <input type="hidden" name="StudentId" value="@Model.StudentId">
+
+    <div class="row control-group">
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+       Select the School Name
+        <p class="help-block text-danger"></p>
+        
+        <select style="color:blue;" name="SchoolName" id="schoolname" >
+    
+    @foreach (var item in ViewData["SchoolName"] as List<SchoolData>)
+    {
+       
+       <option value="@item.SchoolName">@item.SchoolName</option>
+ 
+
+    }
+    <br />
+    <br />
+   </select>
+
+        </div>
+        </div>
+    
+    
+    <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>School Semester</label>
+                                <input type="text" maxlength="50" class="form-control" name="Semester" style="height:25px;font-size:18px;" placeholder="Enter the Semester" id="SchoolSemester"
+                                     required data-validation-required-message="Please enter the semester." >
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+    
+     <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>School Course</label>
+                                <input type="text" maxlength="50" class="form-control"   name="CourseApplied" style="height:25px;font-size:18px;" placeholder="Enter the required course" id="SchoolCourse"
+                                     required data-validation-required-message="Please enter the course applied." >
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+    
+    <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control"   name="CollegeEmail" style="height:25px;font-size:18px;" id="schoolemail"  disabled">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+    
+    
+    <br />
+    <br />
+    <br />
+    <br />
+    
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                               <center>
+                                     <button id="schoolapplicationbtn" type="submit" onclick="CallAjax()" class="btn btn-primary btn-medium">Submit Application</button>
+                                </center>
+                               
+                            </div>
+                        </div>
+    
+
+}
+    
+       
+<script src="../startbootstrap-freelancer-1.0.4/js/jquery.js"></script>              
+<script>
+    $(document).ready(function () {
+                
+
+        $('#schoolname').on('change', function () {
+           
+            var schoolname = $(this).val();
+            
+           @{List<SchoolData> listFromController = (List<SchoolData>)ViewData["SchoolName"];}
+            var totalArray = [
+            @for (int i = 0; i < listFromController.Count; i++)
+                
+            {
+               @: '@(listFromController[i].EmailAddress)',
+               
+                }
+            ]
+          
+            var totalSchoolName = [
+            @for (int i = 0; i < listFromController.Count; i++)
+                
+            {
+               @: '@(listFromController[i].SchoolName)',
+               
+                }
+            ]
+            
+                   
+            for (var i = 0; i < totalSchoolName.length; i++) {
+
+                if (schoolname === totalSchoolName[i])
+                {
+                    
+                    $("#schoolemail").val(totalArray[i]);
+                    break;
+                    
+            
+            }
+
+            }
+        });
+
+
+
+    });
+
+    function CallAjax() {
+
+        $.ajax({
+            url: '@Url.Action("ApplyCollege")',
+            type: 'POST',
+            data: JSON.stringify(@Model),
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                alert("Your application has been submitted successfully");
+                // window.location.assign("../Home/HomePage");
+            },
+
+            error: function () {
+                alert('Please try it later on');
+            }
+            // TODO: process the server results
+
+        });
+    }
+
+  </script>
+ 

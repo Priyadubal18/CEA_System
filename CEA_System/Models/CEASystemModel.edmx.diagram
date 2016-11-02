@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="17e12656792249ec8425250d656da903" Name="Diagram1">
+        <EntityTypeShape EntityType="TestModel.AcademicInfo" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.AddressStudent" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.ApplyCollege" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.CitizenShipInfo" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.ContactMe" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.ExamInfo" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.PreviousSchoolInfo" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Review" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.SchoolData" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Student_Profile" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.SupportingDoc" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.WorkInfo" Width="1.5" PointX="3" PointY="21.75" IsExpanded="true" />
+        <AssociationConnector Association="TestModel.FK_AcademicInfo_Student_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_AddressStudent_Student_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_CitizenShipInfo_Student_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_ExamInfo_Student_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_PreviousSchoolInfo_Student_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_SupportingDoc_Student_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_WorkIInfo_Student_Profile" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,51 @@
+@import "compass";
+@import "compass/reset";
+
+body{
+background-color:cyan;
+font-size :40px;
+}
+
+section{
+display:flex;
+justify-content:space-between; 
+}
+
+.back{
+padding:10px;
+min-width:200px;
+background-color:yellow;
+font-size:30px;
+max-width :500px;
+flex:1;
+}
+
+.back2{
+padding:10px;
+height:600px;
+width:1800px;
+flex:2;
+max-width:500px;
+background-color :Green;
+
+img{
+display:none;
+height:400px;
+width:400px;
+}
+
+}
+
+.back3{
+flex:1;
+background-color :Pink;
+font-size:30px;
+order:-1;
+max-width:550px;
+}
+
+@media screen and (max-width:1200px) {
+    section{
+       	   flex-flow:row wrap;
+    }
+}

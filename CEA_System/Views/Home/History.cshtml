@@ -1,0 +1,89 @@
+﻿@model IEnumerable<CEA_System.Models.ApplyCollege>
+
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+    
+}
+
+
+<h2>History</h2>
+<style>
+    .red
+    {
+         background-color:brown;
+         font-size:20px;
+         text-align:justify;
+         width:10px;
+         font-weight:600;
+         
+    }
+
+    .schoolname
+    {
+         background-color:white;
+         color:black;
+         font-size:18px;
+         text-align:justify;
+         width:500px;
+         font-weight:600;
+         border:solid;
+    }
+</style>
+
+<br />
+<br />
+<center>
+<p>
+Below is your Application History!!
+    </p>
+    </center>
+<br />
+<br />
+<center>
+
+<table border="1">
+    <tr class ="red">
+        <th style="padding:0 15px 0 15px;">
+            @Html.DisplayNameFor(model => model.SchoolName)
+        </th>
+        <th style="padding:0 15px 0 15px;">
+            @Html.DisplayNameFor(model => model.Semester)
+        </th>
+        <th style="padding:0 15px 0 15px;">
+            @Html.DisplayNameFor(model => model.CourseApplied)
+        </th>
+        <th style="padding:0 15px 0 15px;">
+            @Html.DisplayNameFor(model => model.CollegeEmail)
+        </th>
+        
+        <th style="padding:0 15px 0 15px;">
+            @Html.DisplayNameFor(model => model.DateApplied)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class ="schoolname">
+        <td style="padding:10px 15px 10px 15px;">
+            @Html.DisplayFor(modelItem => item.SchoolName)
+        </td>
+        <td style="padding:10px 15px 10px 15px;">
+            @Html.DisplayFor(modelItem => item.Semester)
+        </td>
+        <td style="padding:10px 15px 10px 15px;">
+            @Html.DisplayFor(modelItem => item.CourseApplied)
+        </td>
+        <td style="padding:10px 15px 10px 15px;">
+            @Html.DisplayFor(modelItem => item.CollegeEmail)
+        </td>
+        
+        <td style="padding:10px 15px 10px 15px;">
+            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.DateApplied))
+        </td>
+      
+    </tr>
+}
+
+</table>
+</center>

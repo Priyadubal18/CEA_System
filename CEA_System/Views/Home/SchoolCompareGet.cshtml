@@ -1,0 +1,276 @@
+﻿@model IEnumerable<CEA_System.Models.SchoolCompare>
+@using CEA_System.Models;
+
+@{
+    ViewBag.Title = "SchoolCompareGet";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+     var studentname=Session["StudentProfile"]  as  Student_Profile;
+     var  schoolnames = Session["SchoolNames"] as List<SchoolCompare>;
+
+     }
+<h2>School Compare</h2>
+<br />
+<br />
+<br />
+<br />
+<style>
+    .red
+    {
+         background-color:brown;
+         font-size:14px;
+         text-align:justify;
+         width:10px;
+         font-weight:600;
+    }
+
+    .schoolname
+    {
+         background-color:white;
+         color:brown;
+         font-size:18px;
+         text-align:justify;
+         width:500px;
+         font-weight:600;
+    }
+</style>
+<center><p>Select school &nbsp;</p></center>
+
+ @using (Html.BeginForm("SchoolCompareGet", "Home", FormMethod.Post, new { id = "CompareForm" }))
+                     {
+<label style="font-size:18px;">  </label>
+<select style="color:blue;" multiple  name="schoolname" id="schoolname">
+    
+    @foreach (var item in schoolnames)
+    {
+       
+       <option value="@item.SchoolId">@item.SchoolName</option>
+ 
+
+    }
+    <br />
+    <br />
+   </select>
+      <div id="success"></div>
+          <div class="row">
+              <div class="form-group col-xs-12">
+                    <center>
+                        <br />
+                        <br />
+                     <button id="SchoolComparebtn" type="submit" class="btn btn-primary btn-medium">Get School Compare</button>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                    </center>
+                              
+                            </div>
+                        </div>
+ }
+
+
+
+@*<-- Comapare Table !->*@
+
+<div class="table-responsive">
+    <center>
+<table style=" width:1200px; display:@ViewBag.tableStatus" class="table table-bordered" id="schooltbl">
+   <tr>
+        <td>
+            School Name
+        </td>
+        <td>
+           
+         @Model.ElementAt(0).SchoolName
+
+        </td>
+        <td>
+             @Model.ElementAt(1).SchoolName
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Address
+        </td>
+        <td>
+           @Model.ElementAt(0).AddressSchool
+        </td>
+        <td>
+            @Model.ElementAt(1).AddressSchool
+        </td>
+    </tr><tr>
+        <td>
+            City
+        </td>
+        <td>
+            @Model.ElementAt(0).City
+        </td>
+        <td>
+            @Model.ElementAt(1).City
+        </td>
+    </tr><tr>
+        <td>
+            School Code
+        </td>
+        <td>
+            @Model.ElementAt(0).SchoolCode
+        </td>
+        <td>
+            @Model.ElementAt(1).SchoolCode
+        </td>
+    </tr>
+     <tr>
+        <td>
+            Tuition Fee
+        </td>
+        <td>
+            @Model.ElementAt(0).TutionFee
+        </td>
+        <td>
+           @Model.ElementAt(1).TutionFee
+        </td>
+    </tr>
+      <tr>
+        <td>
+          Graduation Rate  
+        </td>
+        <td>
+            @Model.ElementAt(0).GraduateRate
+        </td>
+        <td>
+            @Model.ElementAt(1).GraduateRate
+        </td>
+    </tr>
+      <tr>
+        <td>
+        Acceptance Rate
+        </td>
+        <td>
+            @Model.ElementAt(0).AcceptanceRate
+        </td>
+        <td>
+           @Model.ElementAt(1).AcceptanceRate
+        </td>
+    </tr>
+    <tr>
+        <td>
+        Retention Rate
+        </td>
+        <td>
+             @Model.ElementAt(0).RetentionRate
+        </td>
+        <td>
+            @Model.ElementAt(1).RetentionRate
+        </td>
+    </tr>
+        <tr>
+        <td>
+        Best Program offered
+        </td>
+        <td>
+             @Model.ElementAt(0).BestProgram
+        </td>
+        <td>
+            @Model.ElementAt(1).BestProgram
+        </td>
+    </tr>
+   <tr>
+        <td>
+     Courses Available
+        </td>
+        <td>
+             @Model.ElementAt(0).CourseAvailable
+        </td>
+        <td>
+            @Model.ElementAt(1).CourseAvailable
+        </td>
+    </tr>
+    
+        
+     
+        <tr>
+        <td>
+       School Type
+        </td>
+        <td>
+             @Model.ElementAt(0).SchoolType
+        </td>
+        <td>
+            @Model.ElementAt(1).SchoolType
+        </td>
+            </tr>
+            <tr>
+        <td>
+        Email Address
+        </td>
+        <td>
+             @Model.ElementAt(0).EmailAddress
+        </td>
+        <td>
+            @Model.ElementAt(1).EmailAddress
+        </td>
+    </tr>
+    
+        <tr>
+        <td>
+       Comment
+        </td>
+        <td>
+             @Model.ElementAt(0).Comment
+        </td>
+        <td>
+             @Model.ElementAt(1).Comment
+        </td>
+    </tr>
+      <tr>
+        <td>
+       Review Link
+        </td>
+        <td>
+             @Model.ElementAt(0).ReviewLink
+        </td>
+        <td>
+             @Model.ElementAt(1).ReviewLink
+        </td>
+    </tr>
+     <tr>
+        <td>
+       Web Site
+        </td>
+        <td>
+             @Model.ElementAt(0).WebSite
+        </td>
+        <td>
+             @Model.ElementAt(1).WebSite
+        </td>
+    </tr>
+</table>
+        </center>
+    </div>
+<script src="../startbootstrap-freelancer-1.0.4/js/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+
+       
+        $('#common').height("1800px");
+        $('#schooltbl td:first-child').addClass("red");
+        $('#schooltbl tr td:nth-child(2)').addClass("schoolname");
+        $('#schooltbl tr td:nth-child(3)').addClass("schoolname");
+        $('#schooltbl td').eq(1).addClass("red");
+        $('#schooltbl td').eq(2).addClass("red");
+        $('.success').height(1300);
+       @* //alert(@studentname.Firstname);*@
+
+        $('#welcomeusername').html("@studentname.FirstName");
+
+        $('#SchoolComparebtn').click(function () {
+       
+            if (($('#schoolname').val().length > 2) || ($('#schoolname').val().length < 2)) {
+                alert('Please select 2 schools');
+                return false;
+            }
+
+
+        });
+    });
+</script>
+

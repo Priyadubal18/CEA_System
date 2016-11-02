@@ -1,0 +1,1054 @@
+﻿@model CEA_System.Models.Student_Profile
+@using CEA_System.Models;
+@{
+    ViewBag.Title = "Contacttest";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+    var studentname = Session["StudentProfile"] as Student_Profile;
+}
+
+  <!-- Profile Section -->
+      <section  class="success"  id="createprofile">
+        <div class="container" style="margin-top:20px;">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Create Profile</h2>
+                 @*   <hr class="star-primary">*@ <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div>
+                    <b> <center style =" color:red"> @ViewBag.Studentprofile </center></b> <br /> <br /><br />
+                   </div>
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                   @* @using (Html.BeginForm("StudentHome", "Home", FormMethod.Post, new { id = "CreateProfileForm" }))*@
+                    
+              @using (Html.BeginForm("CreateProfile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+              {
+                  
+                   @Html.AntiForgeryToken()
+                        <input type="hidden" name="StudentId" value="@Model.StudentId">
+                
+                       <input type="hidden" name="Filefordelete" value="@Model.Filefordelete" id="filedel">
+                        <input type="hidden" name="Password" value="@Model.Password">
+                        <input type="hidden" name="Email" value="@Model.Email">
+                        <input type="hidden" name="AddressStudents[0].AddressId" value="@Model.AddressStudents.ElementAtOrDefault(0).AddressId">
+                        <input type="hidden" id="addrtype" value="@Model.AddressStudents.ElementAtOrDefault(0).Type"  name="AddressStudents[0].Type">
+                        <input type="hidden" name="CitizenShipInfoes[0].CitizenshipId" value="@Model.CitizenShipInfoes.ElementAtOrDefault(0).CitizenshipId">
+                        <input type="hidden" name="AcademicInfoes[0].AcademicId" value="@Model.AcademicInfoes.ElementAtOrDefault(0).AcademicId">
+                        <input type="hidden" name="PreviousSchoolInfoes[0].SchoolInfoId" value="@Model.PreviousSchoolInfoes.ElementAtOrDefault(0).SchoolInfoId">
+                        <input type="hidden" name="ExamInfoes[0].ExamId" value="@Model.ExamInfoes.ElementAtOrDefault(0).ExamId">
+                        <input type="hidden" name="ExamInfoes[1].ExamId" value="@Model.ExamInfoes.ElementAtOrDefault(1).ExamId"> 
+                        <input type="hidden" name="ExamInfoes[2].ExamId" value="@Model.ExamInfoes.ElementAtOrDefault(2).ExamId">       
+                        <input type="hidden" name="WorkInfoes[0].WorkInfoId" value="@Model.WorkInfoes.ElementAtOrDefault(0).WorkInfoId">
+                                                
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>First Name</label>
+                                <input type="text" maxlength="50" class="form-control" name="FirstName" style="height:25px;font-size:18px;" placeholder="First Name" id="FirstName"
+                                     required data-validation-required-message="Please enter your first name." value="@Model.FirstName">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Middle Name</label>
+                                <input type="text"  maxlength="50" value="@Model.MiddleName" class="form-control" name="MiddleName" style="height:25px;font-size:18px;" placeholder="Middle Name" id="MiddleName" required data-validation-required-message="Please enter your middle name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                            <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Last Name</label>
+                                <input type="text"   maxlength="50" class="form-control" name="LastName"style="height:25px;font-size:18px;" placeholder="Last Name" id="LastName" required data-validation-required-message="Please enter your last name." value="@Model.LastName">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                         <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>PhoneNumber</label>
+                                <input type="text" maxlength="10" value="@Model.PhoneNumber" class="form-control numeric"  name="PhoneNumber" style="height:25px;font-size:18px;" placeholder="Phone number" id="PhoneNumber" data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Date of birth</label>
+                                <input type="date"  class="form-control" name="DateOfBirth" style="height:25px;font-size:18px;" id="DateOfBirth" required data-validation-required-message="Please enter your country name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                 
+                      
+                         <div class="row control-group">
+                            <div class="form-group col-xs-12">
+                                <br /> 
+                                <label style="float:left;font-size:18px">Gender: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            
+                               <label style="float:left;font-size:18px">Female:&nbsp;
+
+                               </label><input type="radio" name="gender" style="float:left;color:#18bc9c;height:25px;" value="female" id="female">
+                                
+                               <label style="float:left;font-size:18px;"> &nbsp;&nbsp;&nbsp;&nbsp;Male:&nbsp;
+
+                               </label><input type="radio" name="gender" style="float:left;color:#18bc9c; height:25px;" value="male" id="male">
+                                <br />
+                                <p class="help-block text-danger"></p>
+                                <hr style="color:white">
+                             </div>                            
+
+                                    </div>
+                        
+                         <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>SSN</label>
+                                <input placeholder="SSN" value="@Model.SSN"  type="text" pattern=".{9,9}" title="Number should be within 9 digits" maxlength="9" class="form-control" name="SSN"style="height:25px;font-size:18px;" id="SSN" required data-validation-required-message="Please enter your SSN.">
+                                  <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        
+                       <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" maxlength="50" placeholder="Email id" style="background-color:#18bc9c;height:25px;font-size:18px;" value=@Model.Email disabled>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                        
+                       <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Country of birth </label>
+                                <input type="text" value="@Model.CountryofBirth" maxlength="50"class="form-control" name="CountryofBirth" style="height:25px;font-size:18px;" placeholder="Country of birth"id="CountryofBirth" required data-validation-required-message="Please enter your country name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>        
+                          
+                 
+                     <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Street Address & Apt.No</label>
+                                                      
+                             <input type="text" value="@Model.AddressStudents.ElementAtOrDefault(0).AptStreet" class="form-control" name= "AddressStudents[0].AptStreet" style="height:25px;font-size:18px;" placeholder="Street Address and Apt No" id="AptStreet" required data-validation-required-message="Please enter Apartment No.">
+                                                            
+                                 <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+              
+                                 
+                 
+                       <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>City</label>
+                                <input type="text" value = "@Model.AddressStudents.ElementAtOrDefault(0).City" class="form-control" name="AddressStudents[0].City" style="height:25px;font-size:18px;" placeholder="City" id="City" required data-validation-required-message="Please enter your city.">
+                               
+                                 <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                  
+                                
+                 
+                       <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>State</label>
+                                <input type="text" value="@Model.AddressStudents.ElementAtOrDefault(0).State" class="form-control" name="AddressStudents[0].State" style="height:25px;font-size:18px;" placeholder="State" id="State" required data-validation-required-message="Please enter your state.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                       
+                       <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Zipcode</label>
+                                <input type="text" value="@Model.AddressStudents.ElementAtOrDefault(0).ZipCode" class="form-control" name="AddressStudents[0].ZipCode" style="height:25px;font-size:18px;" placeholder="ZipCode" id="ZipCode" required data-validation-required-message="Please enter your zipcode.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                  
+                    
+                       <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Country</label>
+                                <input type="text" value="@Model.AddressStudents.ElementAtOrDefault(0).Country" class="form-control" name="AddressStudents[0].Country" style="height:25px;font-size:18px;" placeholder="Country of residence" id="Country" required data-validation-required-message="Please enter country of residence.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                                         
+                 
+                       <div class="row control-group">
+                            <div class="form-group col-xs-12">
+                                Address Type :
+                                <select style="color:blue;" multiple  name="Addresstype" id="Addresstype">       
+                                  <option value="1">Permanent</option>
+                                  <option value="2">Temporary</option>
+                                 </select>
+
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                       
+                  
+                             <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>CitizenshipCountry</label>
+                                <input type="text" class="form-control" value="@Model.CitizenShipInfoes.ElementAtOrDefault(0).CountryOfCitizenship"name="CitizenShipInfoes[0].CountryOfCitizenship" style="height:25px;font-size:18px;" placeholder="Citizenship Country" id="CitizenshipCountry" required data-validation-required-message="Please enter country of citizenship.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                    
+                     
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Ethnicity</label>
+                                <input type="text" class="form-control" value="@Model.CitizenShipInfoes.ElementAtOrDefault(0).Ethnicity" name="CitizenShipInfoes[0].Ethnicity" style="height:25px;font-size:18px;" placeholder="Ethnicity" id="Ethnicity" required data-validation-required-message="Please enter Ethnicity.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                       
+                     
+                         <div class="row control-group">
+                            <div class="form-group col-xs-12">
+                                <br /> 
+                                <label style="float:left;font-size:18px">I20 Required: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            
+                               <label style="float:left;font-size:18px">Yes:&nbsp;</label><input type="radio" name="CitizenShipInfoes[0].I20Required" style="float:left;color:#18bc9c;height:25px;" value="Yes" id="I20Yes">
+                                
+                               <label style="float:left;font-size:18px;"> &nbsp;&nbsp;&nbsp;&nbsp;No:&nbsp;</label><input type="radio" name="CitizenShipInfoes[0].I20Required" style="float:left;color:#18bc9c; height:25px;" value="No" id="I20NO">
+                                <br />
+                                <p class="help-block text-danger"></p>
+                                <hr style="color:white">
+                             </div>
+                       </div>
+                   
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>CurrentLocation</label>
+                                <input type="text" class="form-control"  value="@Model.CitizenShipInfoes.ElementAtOrDefault(0).CurrentLocation"
+                                    name="CitizenShipInfoes[0].CurrentLocation" 
+
+                                    style="height:25px;font-size:18px;" placeholder="CurrentLocation" 
+                                    id="CurrentLocation" 
+                                    required data-validation-required-message="Please enter current location.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                  
+                  
+                   <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Visa Status</label>
+                                <input type="text" class="form-control"  value="@Model.CitizenShipInfoes.ElementAtOrDefault(0).VisaStatus"
+                                    name="CitizenShipInfoes[0].VisaStatus" 
+
+                                    style="height:25px;font-size:18px;" placeholder="Visa Status" 
+                                    id="VisaStatus" 
+                                    required data-validation-required-message="Please enter VisaStatus.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                  
+                         
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12">
+                                <br /> 
+                                <label style="float:left;font-size:18px">Are you a veteran ? &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            
+                               <label style="float:left;font-size:18px">Yes:&nbsp;</label><input type="radio" 
+                                   name="CitizenShipInfoes[0].VeteranStatus" style="float:left;color:#18bc9c;height:25px;" value="Yes" id="VYes">
+                                
+                               <label style="float:left;font-size:18px;"> &nbsp;&nbsp;&nbsp;&nbsp;No:&nbsp;</label>
+                                <input type="radio" name="CitizenShipInfoes[0].VeteranStatus" style="float:left;color:#18bc9c; height:25px;" value="No" id="VNo">
+                                <br />
+                                <p class="help-block text-danger"></p>
+                                </div>
+                       </div>                 
+                            
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Major</label>
+                                <input type="text" class="form-control" name="AcademicInfoes[0].Major"  value="@Model.AcademicInfoes.ElementAtOrDefault(0).Major" style="height:25px;font-size:18px;" placeholder="Please enter major you are intersted" id="major" required data-validation-required-message="Please enter major.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                                   
+                        
+                       
+                          <div class="row control-group">
+                            <div class="form-group col-xs-12">
+                                <br /> 
+                                <label style="float:left;font-size:18px">I am applying as a: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            
+                               <label style="float:left;font-size:18px">Full Time:&nbsp;</label><input type="radio" name="AcademicInfoes[0].AdmissionType" style="float:left;color:#18bc9c;height:25px;" value="Fulltime" id="Ftime">
+                                
+                               <label style="float:left;font-size:18px;"> &nbsp;&nbsp;&nbsp;&nbsp;Part Time:&nbsp;</label><input type="radio" name="AcademicInfoes[0].AdmissionType" style="float:left;color:#18bc9c; height:25px;" value="Parttime" id="Ptime" >
+                             
+                               <label style="float:left;font-size:18px;"> &nbsp;&nbsp;&nbsp;&nbsp;Transfer:&nbsp;</label><input type="radio" name="AcademicInfoes[0].AdmissionType" style="float:left;color:#18bc9c; height:25px;" value="Transfer" id="Transfer" >
+                                   <br />
+                                <p class="help-block text-danger"></p>
+                                <hr style="color:white">
+                             </div>
+                       </div>
+                  
+                     
+                       
+                    <div class="row control-group">
+                            <div class="form-group col-xs-12">
+                                <br /> 
+                                <label style="float:left;font-size:18px">Semester &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            
+                               <label style="float:left;font-size:18px">Fall:&nbsp;</label><input type="radio" name="AcademicInfoes[0].Semester" style="float:left;color:#18bc9c;height:25px;" value="Fall" id="Fall">
+                                
+                               <label style="float:left;font-size:18px;"> &nbsp;&nbsp;&nbsp;&nbsp;Spring:&nbsp;</label><input type="radio" name="AcademicInfoes[0].Semester" style="float:left;color:#18bc9c; height:25px;" value="Spring" id="Spring">
+                                <label style="float:left;font-size:18px;"> &nbsp;&nbsp;&nbsp;&nbsp;Summer:&nbsp;</label><input type="radio" name="AcademicInfoes[0].Semester" style="float:left;color:#18bc9c; height:25px;" value="Summer"id="Summer">
+                                <br />
+                                <p class="help-block text-danger"></p>
+                                <hr style="color:white">
+                             </div>
+                       </div>
+                  
+                    <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Application Year</label>
+                                <input type="text" class="form-control" name="AcademicInfoes[0].ApplicationYear" value="@Model.AcademicInfoes.ElementAtOrDefault(0).ApplicationYear" style="height:25px;font-size:18px;" placeholder="Please enter which year you would like to enroll like 2016" id="ApplicationYear" required data-validation-required-message="Please enter application year.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                    
+                  
+                    <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>School Name</label>
+                                <input type="text" class="form-control" name="PreviousSchoolInfoes[0].SchoolName" value="@Model.PreviousSchoolInfoes.ElementAtOrDefault(0).SchoolName" style="height:25px;font-size:18px;" placeholder="Please enter your Previous School" id="PrevSchoolName" required data-validation-required-message="Please enter previous school info.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                    
+                
+                         <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                              <br /> Previous School Start Date:
+                                <input type="date" class="form-control" name="PreviousSchoolInfoes[0].DateFrom" value="@Model.PreviousSchoolInfoes.ElementAtOrDefault(0).DateFrom"style="height:25px;font-size:18px;" id="FromDate" required data-validation-required-message="Please enter Start date .">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                  
+                     
+                         <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <br />  Previous School End Date:
+                                <input type="date" class="form-control" name="PreviousSchoolInfoes[0].DateTo" value="@Model.PreviousSchoolInfoes.ElementAtOrDefault(0).DateTo" style="height:25px;font-size:18px;" id="ToDate" required data-validation-required-message="Please enter the End date.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                     
+                         <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Highest Degree Achieved</label>
+                                <input type="text" class="form-control" name="PreviousSchoolInfoes[0].DegreeName" value="@Model.PreviousSchoolInfoes.ElementAtOrDefault(0).DegreeName" style="height:25px;font-size:18px;" placeholder="Please enter the highest degree achieved" id="PrevDegree" required data-validation-required-message="Please enter the highest degree achieved">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                    
+                         <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Major</label>
+                                <input type="text" class="form-control" name="PreviousSchoolInfoes[0].Major" value="@Model.PreviousSchoolInfoes.ElementAtOrDefault(0).Major"style="height:25px;font-size:18px;" placeholder="Please enter previous major" id="Prevmajor" required data-validation-required-message="Please enter previous major.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                  
+                      
+                         <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Address</label>
+                                <input type="text" class="form-control" name="PreviousSchoolInfoes[0].Address" value="@Model.PreviousSchoolInfoes.ElementAtOrDefault(0).Address" style="height:25px;font-size:18px;" placeholder="Please enter the school address" id="PrevSchollAddress" required data-validation-required-message="Please enter the school address">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                         
+                         <div class="row control-group">
+                         <div class="form-group col-xs-12 floating-label-form-group controls">
+
+                        Please Select Appropriate Exam and enter Details Accordingly
+                             <br />     
+                        <input type="checkbox" name="ExamInfoes[0].ExamType" value="GRE" id="GRE" /> GRE
+                             <br /> GRE Exam Date
+                              <input type="date" class="form-control" name="ExamInfoes[0].DateOfExam" value="@Model.ExamInfoes.ElementAtOrDefault(0).DateOfExam" style="height:25px;font-size:18px;" id="GREExamDate" >
+                              <label>Exam Score</label>
+                              <input type="text" class="form-control" name="ExamInfoes[0].Score" value="@Model.ExamInfoes.ElementAtOrDefault(0).Score"style="height:25px;font-size:18px;"  placeholder="Please enter score" id="GREScore">                                                            
+                       <input type="checkbox" name="ExamInfoes[1].ExamType" value="TOEFL" id="TOEFL" /> TOEFL
+                             <br /> TOEFL Exam Date
+                              <input type="date" class="form-control" name="ExamInfoes[1].DateOfExam" value="@Model.ExamInfoes.ElementAtOrDefault(1).DateOfExam" style="height:25px;font-size:18px;" id="TOEFLExamDate" >
+                              <label>Exam Score</label>
+                              <input type="text" class="form-control" name="ExamInfoes[1].Score" value="@Model.ExamInfoes.ElementAtOrDefault(1).Score" style="height:25px;font-size:18px;"  placeholder="Please enter score" id="TOEFLScore">                                                            
+                       <input type="checkbox" name="ExamInfoes[2].ExamType" value="IELTS" id ="IELTS" /> IELTS
+                                <br /> IELTS Exam Date
+                              <input type="date" class="form-control" name="ExamInfoes[2].DateOfExam" value="@Model.ExamInfoes.ElementAtOrDefault(2).DateOfExam" style="height:25px;font-size:18px;" id="IELTSExamDate" >
+                              <label>Exam Score</label>
+                              <input type="text" class="form-control" name="ExamInfoes[2].Score" value="@Model.ExamInfoes.ElementAtOrDefault(2).Score" style="height:25px;font-size:18px;"  placeholder="Please enter score" id="IELTSScore">     
+                         </div>
+                        </div>                                                                        
+                                                                                        
+                       
+                   <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Company Name</label>
+                                <input type="text" class="form-control" name="WorkInfoes[0].CompanyName" value="@Model.WorkInfoes.ElementAtOrDefault(0).CompanyName" style="height:25px;font-size:18px;" placeholder="Please enter your Company Name" id="CompanyName"  data-validation-required-message="Please enter previous work info.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                       
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                              <br /> Start Date:
+                                <input type="date" class="form-control" name="WorkInfoes[0].FromDate"value="@Model.WorkInfoes.ElementAtOrDefault(0).FromDate" style="height:25px;font-size:18px;" id="WFromDate"  data-validation-required-message="Please enter work start date .">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                    
+                         <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <br /> End Date:
+                                <input type="date" class="form-control" name="WorkInfoes[0].ToDate" value="@Model.WorkInfoes.ElementAtOrDefault(0).ToDate" style="height:25px;font-size:18px;" id="WToDate"  data-validation-required-message="Please enter work end date.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                       
+                  
+                  
+                          <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                               Description <br />
+                                <textarea  maxlength="200" class="form-control" name="WorkInfoes[0].Description"   style="height:75px;font-size:18px;" placeholder="Please enter your work description" id="WorkDescp" >
+                                                                @Model.WorkInfoes.ElementAtOrDefault(0).Description
+                                </textarea>
+                                    <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                        
+                          <div class="row control-group" >
+                          <div class="form-group col-xs-12 floating-label-form-group controls">  
+                               Achievement <br />
+                                <textarea rows="4" maxlength="200" cols= "50"class="form-control" name="WorkInfoes[0].Achievement"    style="height:75px;font-size:18px;" placeholder="Please enter your Achievements" id="WorkAchieve" >
+                                       @Model.WorkInfoes.ElementAtOrDefault(0).Achievement
+                                </textarea>
+                                    <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                  <script>
+                      filetotalsize = 0;
+                  </script>
+                  foreach (var item in @Model.SupportingDocs)
+                  {
+                        <input type="checkbox"  name="Supportingdoc" id="@item.SupportingDocId" /><label>Mark Delete</label> 
+                   <input type="hidden"  value="@item.filelength" id="fileContent">
+                         <a data-placement="bottom" title=@item.TypeofDoc style="text-align:left"
+                             href='~/Home/GetDocumentById?docId=@item.SupportingDocId &StudentId=@item.StudentId'>
+                              @item.TypeofDoc
+                         </a>
+                 
+                              <br />
+                      <script>
+                          filetotalsize =@item.filelength +filetotalsize;
+                      </script>
+                               
+                  }
+                    
+                      <div class="row control-group" >
+                          <div class="form-group col-xs-12 floating-label-form-group controls">  
+                               RESUME: <br />
+                              <label for="resume">Filename:</label>
+                                <input type="file" name="files" id="resume" multiple >
+                                    <p class="help-block text-danger"></p>
+                            </div>
+                       </div>@*
+                  
+                  
+                        
+                        <div class="row control-group" >
+                          <div class="form-group col-xs-12 floating-label-form-group controls">  
+                               TRANSCRIPT: <br />
+                                <input type="file" id="transcript" >
+                                    <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                        
+                        <div class="row control-group" >
+                          <div class="form-group col-xs-12 floating-label-form-group controls">  
+                               STATEMENT OF PURPOSE: <br />
+                                <input type="file" id="sop" >
+                                    <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                        
+                         <div class="row control-group" >
+                          <div class="form-group col-xs-12 floating-label-form-group controls">  
+                               OTHER DOCUMENTS: <br />
+                                <input type="file" id="OTHER" >
+                                    <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+                        
+                   
+                                     
+                         
+                        <br>*@
+                        
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                               <center>
+                                     <button id="createprofilebtn" type="submit"  onclick=" return CallAjax()" class="btn btn-primary btn-medium">Save</button>
+                                </center>
+                               
+                            </div>
+                        </div>
+              }
+                </div>
+            </div>
+        </div>
+    </section>
+<script src="../startbootstrap-freelancer-1.0.4/js/jquery.js"></script>
+<script>
+    function DateCall(Date1) {
+        //debugger;
+        var abc = Date1.split(" ")[0];
+        var d = abc.split('/');
+
+        if (d[1].length === 1)
+            d[1] = "0" + d[1];
+
+        if (d[0].length === 1)
+            d[0] = "0" + d[0]
+
+        var s1 = d[2] + "-" + d[0] + "-" + d[1];
+        return s1;
+
+    }
+
+</script>
+
+ @if ((Model.Gender != null) &&
+     (Model.DateOfBirth != null) &&
+     (Model.AddressStudents.ElementAtOrDefault(0).Type != null) &&
+     (Model.CitizenShipInfoes.ElementAtOrDefault(0).I20Required != null) &&
+     (Model.CitizenShipInfoes.ElementAtOrDefault(0).VeteranStatus != null) &&
+     (Model.AcademicInfoes.ElementAtOrDefault(0).AdmissionType != null) &&
+     (Model.PreviousSchoolInfoes.ElementAtOrDefault(0).DateFrom != null) &&
+     (Model.PreviousSchoolInfoes.ElementAtOrDefault(0).DateTo != null)
+     //(Model.ExamInfoes.ElementAtOrDefault(0).DateOfExam != null) &&
+     // (Model.ExamInfoes.ElementAtOrDefault(1).DateOfExam != null) &&
+     // (Model.ExamInfoes.ElementAtOrDefault(2).DateOfExam != null) 
+     )
+ {
+     if ((Model.ExamInfoes.ElementAtOrDefault(0).ExamType != null) && (Model.ExamInfoes.ElementAtOrDefault(0).DateOfExam != null))
+     {
+        <script>
+        
+         var Examtypegre = '@Model.ExamInfoes.ElementAtOrDefault(0).ExamType.ToString()';
+         var ExamInfoesgre = '@Model.ExamInfoes.ElementAtOrDefault(0).DateOfExam.ToString()';
+            if (ExamInfoesgre != ' ') {
+             //   debugger;
+             var ExamInfoesgre1 = DateCall(ExamInfoesgre);
+             document.getElementById("GREExamDate").defaultValue = ExamInfoesgre1;
+
+         }
+
+         if (Examtypegre === "GRE") {
+             $("#GRE").prop("checked", true);
+         }
+         </script>
+     }
+
+
+
+
+     if ((Model.ExamInfoes.ElementAtOrDefault(1).ExamType != null) && (Model.ExamInfoes.ElementAtOrDefault(1).DateOfExam != null))
+     {
+         <script>
+         var Examtypetoefl = '@Model.ExamInfoes.ElementAtOrDefault(1).ExamType.ToString()';
+         var ExamInfoestoefl = '@Model.ExamInfoes.ElementAtOrDefault(1).DateOfExam.ToString()';
+
+         if (ExamInfoestoefl != ' ') {
+             var ExamInfoestoefl1 = DateCall(ExamInfoestoefl);
+             document.getElementById("TOEFLExamDate").defaultValue = ExamInfoestoefl1;
+
+         }
+
+         if (Examtypetoefl === "TOEFL") {
+             $("#TOEFL").prop("checked", true);
+         }
+         </script>
+     }
+
+
+     if (Model.ExamInfoes.ElementAtOrDefault(2).ExamType != null && Model.ExamInfoes.ElementAtOrDefault(2).DateOfExam != null)
+     {
+         <script>
+         var Examtypeielts = '@Model.ExamInfoes.ElementAtOrDefault(2).ExamType.ToString()';
+         var ExamInfoeielts = '@Model.ExamInfoes.ElementAtOrDefault(2).DateOfExam.ToString()';
+
+         if (ExamInfoeielts != ' ') {
+             var ExamInfoeielts1 = DateCall(ExamInfoeielts);
+             document.getElementById("IELTSExamDate").defaultValue = ExamInfoeielts1;
+
+         }
+
+         if (Examtypeielts === "IELTS") {
+             $("#IELTS").prop("checked", true);
+         }
+       </script>
+     }
+
+     if (Model.WorkInfoes.ElementAtOrDefault(0).FromDate != null && Model.WorkInfoes.ElementAtOrDefault(0).ToDate != null)
+     {
+         <script>
+             var WorkStartDate = '@Model.WorkInfoes.ElementAtOrDefault(0).FromDate.ToString()';
+             var WorkEndDate = '@Model.WorkInfoes.ElementAtOrDefault(0).ToDate.ToString()';
+
+
+             var WorkStartDate1 = DateCall(WorkStartDate);
+             document.getElementById("WFromDate").defaultValue = WorkStartDate1;
+
+             var WorkEndDate1 = DateCall(WorkEndDate);
+             document.getElementById("WToDate").defaultValue = WorkEndDate1;
+
+       </script>
+     }
+     
+     
+ <script>
+    
+     var gender = '@Model.Gender.ToString()';
+     var BirthDate = '@Model.DateOfBirth.ToString()';
+     var addresstype = '@Model.AddressStudents.ElementAtOrDefault(0).Type.ToString()';
+     var I20 = '@Model.CitizenShipInfoes.ElementAtOrDefault(0).I20Required.ToString()';
+     var vetranstatus = '@Model.CitizenShipInfoes.ElementAtOrDefault(0).VeteranStatus.ToString()';
+     var AdmissionType = '@Model.AcademicInfoes.ElementAtOrDefault(0).AdmissionType.ToString()';
+     var Semester = '@Model.AcademicInfoes.ElementAtOrDefault(0).Semester.ToString()';
+     var PreSchoolStartDate = '@Model.PreviousSchoolInfoes.ElementAtOrDefault(0).DateFrom.ToString()';
+     var PreSchoolEndDate = '@Model.PreviousSchoolInfoes.ElementAtOrDefault(0).DateTo.ToString()'; 
+         
+     var Birthdate1 = DateCall(BirthDate);
+     document.getElementById("DateOfBirth").defaultValue = Birthdate1;
+     
+     var PreSchoolStartDate1 = DateCall(PreSchoolStartDate);
+     document.getElementById("FromDate").defaultValue = PreSchoolStartDate1;
+
+     var PreSchoolEndDate1 = DateCall(PreSchoolEndDate);
+     document.getElementById("ToDate").defaultValue = PreSchoolEndDate1;
+           
+
+     if (gender === "female") {
+         $("#female").prop("checked", true);
+     }
+     else {
+         $("#male").prop("checked", true);
+     }
+
+     if (addresstype === "1") {
+         $("#Addresstype").val(1).attr('selected', 'selected');
+     }
+     else {
+         $("#Addresstype").val(2).attr('selected', 'selected');
+     }
+
+
+     if (I20 === "Yes") {
+         $("#I20Yes").prop("checked", true);
+     }
+     else {
+         $("#I20NO").prop("checked", true);
+     }
+
+     if (vetranstatus === "Yes") {
+         $("#VYes").prop("checked", true);
+     }
+     else {
+         $("#VNo").prop("checked", true);
+     }
+
+
+     if (AdmissionType === "Fulltime") {
+         $("#Ftime").prop("checked", true);
+     }
+     else if (AdmissionType === "Parttime") {
+         $("#Ptime").prop("checked", true);
+     }
+     else       
+         $("#Transfer").prop("checked", true);
+         
+
+     if (Semester === "Fall") {
+         $("#Fall").prop("checked", true);
+     }
+     else if (Semester === "Spring") {
+         $("#Spring").prop("checked", true);
+     }
+     else
+         $("#Summer").prop("checked", true);
+
+
+
+ </script>
+ }
+
+  <script>
+      $(document).ready(function () {
+          debugger;
+          var f = 0;
+          totalsize = 0;
+          totalSizeofdelete = 0;
+          var fileforDelete = [];
+          $('#resume').on('change', function () {
+            // debugger;
+              var files = document.getElementById("resume").files;
+              for (var i = 0; i < files.length; i++) {   // alert(files[i].name);
+                  //  var myfile = $(this).val();
+                  totalsize = totalsize + files[i].size;
+                //  alert(totalsize);
+                  var ext = files[i].name.split('.').pop();
+                  if (ext == "pdf" || ext == "docx" || ext == "doc") {
+                      //   alert(ext); 
+                      //  return true;
+
+                  } else {
+                      alert(ext + " type of file extension not allowed");
+                      f = 1;
+                  }
+              }
+              if (f === 1) {
+                  $(this).val("");
+                  f = 0;
+                  return false;
+              }
+              else
+                  return true;
+          });
+
+          $("input:checkbox").change(function () {
+            //  alert($(this).attr("name"));
+            //  debugger;
+              //filetotalsize
+              if ($(this).attr("name") == "Supportingdoc") {
+                  if ($(this).is(":checked")) {
+                      var deletefile = "_" + $(this).attr("id");
+                      //  totalSizeofdelete = totalSizeofdelete + parseInt($("#fileContent").val());
+
+                      filetotalsize = filetotalsize - parseInt($("#fileContent").val());
+                      var preval = $("#filedel").val();
+                      if (preval == null) {
+                          preval = deletefile;
+                      }
+                      else {
+                          preval = preval + deletefile;
+                          $("#filedel").val(preval);
+                          //     alert(preval);
+                      }
+                  }
+
+                  else {
+                      filetotalsize = filetotalsize + parseInt($("#fileContent").val());
+                  }
+                  fileforDelete.push(deletefile);
+
+              }//if
+          });
+
+          $("#createprofilebtn").click(function () {
+              //alert("Hi");
+
+              //$(".numberinput").forceNumeric();
+
+                         
+           //   debugger;
+              var EnteredDate = $("#DateOfBirth").val();
+              var pschoolStart = $("#FromDate").val();
+              var pschoolEnd = $("#ToDate").val();
+              var pstartDate1 = new Date(pschoolStart);
+              var pschoolEnd1 = new Date(pschoolEnd);
+            
+              if (pschoolEnd1 <= pstartDate1) {
+                  alert("The Previous School End Date should be greater than StartDate ");
+                  return false;
+              }
+              var pmsg = "Entered Previous School Stardate is greater than today's date";
+              var pschoolbool = CurrentDateChecker(pschoolStart, pmsg);
+              if (pschoolbool) { }
+              else
+              {
+                  alert(pmsg);
+                  return false;
+              }
+              
+              var WorkStart2 = $("#WFromDate").val(); // yyyy/mm/dd
+              //var WorkEnd = $("#WToDate").val();
+             //var WStartDate1 = new Date(WorkStart);
+             // var WEndDate1 = new Date(WorkEnd);
+
+                         
+              var WorkStart = $("#WFromDate").val().split("-"); //dd/mm/yyyy
+              var WStartDate1 = new Date(WorkStart[0], WorkStart[1] - 1, WorkStart[2]);
+
+              var WorkEnd = $("#WToDate").val().split("-"); //dd/mm/yyyy
+              var WorkEnd1 = new Date(WorkEnd[0], WorkEnd[1] - 1, WorkEnd[2]);
+
+
+              if (WorkEnd1 <= WStartDate1) {
+                  alert("The Work End Date should be greater than StartDate ");
+                  return false;
+              }
+
+              var workmsg = "Entered Work Startdate is greater than today's date";
+              var workbool = CurrentDateChecker(WorkStart2, workmsg);
+              if (workbool) { }
+              else
+              {
+
+                  alert(workmsg);
+                  return false;
+              }
+
+
+
+              //alert("EnterDate is" + EnteredDate);
+             
+                  var year = EnteredDate.substring(0, 4);
+                  var month = EnteredDate.substring(5, 7);
+                  var date = EnteredDate.substring(8, 10);
+                  var myDate = new Date(year, month - 1, date);
+                  var today = new Date();
+                  if (myDate >= today) {
+                      alert("Entered Birthdate is greater than today's date ");
+                  }
+              
+                    var age = 18;
+                    myDate.setFullYear(year, month - 1, date);
+                    today.setFullYear(today.getFullYear() - age);
+                                                      
+                    if ((today - myDate) < 0)
+                    { 
+                    alert("Sorry, only persons over the age of " + age + " may enter this site"); 
+                    return false;
+                    }
+
+                    var greexamscore = $("#GREScore").val();
+                    var greexamdate = $("#GREExamDate").val();
+                    var toeflexamscore = $("#TOEFLScore").val();
+                    var toeflexamdate = $("#TOEFLExamDate").val();
+                    var ietlsexamscore = $("#IELTSScore").val();
+                    var ietlsexamdate = $("#IELTSExamDate").val();
+
+                
+                    if ($("#GRE").is(":checked")) {
+                        if (greexamscore == '') {
+                            alert("Please enter GRE score");
+                            return false;
+                        }
+
+                        if (greexamdate == '') {
+                            alert("Please enter GRE exam date");
+                            return false;
+                        }
+
+                    }
+                    else {
+
+                        if ((greexamscore != '') || (greexamdate != '')) {
+                            alert("Please check the GRE checkbox");
+                            return false;
+                        }//
+                    }
+                        
+                        if ($("#TOEFL").is(":checked")) {
+                          //  debugger;
+                            if (toeflexamscore == '') {
+                                alert("Please enter TOEFL score");
+                                return false;
+                            }
+
+                            if (toeflexamdate == '') {
+                                alert("Please enter TOEFL exam date");
+                                return false;
+                            }
+
+                        }
+                        else {
+
+                            if ((toeflexamdate != '')|| (toeflexamscore != '')  )
+                            {
+                                alert("Please check the TOEFL checkbox");
+                                return false;
+                            }
+                       
+
+                    }
+
+                     
+                        if ($("#IELTS").is(":checked")) {
+                            if (ietlsexamscore == '') {
+                                alert("Please enter IELTS score");
+                                return false;
+                            }
+
+                            if (ietlsexamdate == '') {
+                                alert("Please enter IELTS exam date");
+                                return false;
+                            }
+
+                        }
+                        else {
+
+                            if ((ietlsexamdate != '') || (ietlsexamscore != '')) {
+                                alert("Please check the IELTS checkbox");
+                                return false;
+                            }//
+                        }
+
+
+                        
+
+
+                    function CurrentDateChecker(CurrentDate, msg) {
+                     //   debugger;
+                        var cuurentyear = CurrentDate.substring(0, 4);
+                        var currentmonth = CurrentDate.substring(5, 7);
+                        var currentdate = CurrentDate.substring(8, 10);
+                        var currentmyDate = new Date(cuurentyear, currentmonth - 1, currentdate);
+                        var currenttoday = new Date();
+                        currenttoday.setHours(0, 0, 0, 0);
+                        if ((currentmyDate == currenttoday)||(currentmyDate > currenttoday)) {
+                            return false;
+                        }
+                            return true;
+
+
+                    }
+               
+                    
+            });
+
+                      $('#welcomeusername').html("@studentname.FirstName");
+       
+        });
+      function CallAjax(){
+        //  debugger;
+          
+        
+         // var model = JSON.stringify(@Model);
+          //var female = $('#female').val();
+          //var male = $('#male').val();
+        //  alert("file " +filetotalsize);// file size in db 
+        //  alert("file 2 "+totalsize);//attached file
+          // alert(totalSizeofdelete);//file mark for deletion
+          if (filetotalsize != NaN) {
+              totalsize = totalsize + filetotalsize;
+          }
+          else {
+
+              totalsize = totalsize;
+          }
+          //var totalfinalsize = 0;
+
+
+          //if (totalsize > totalSizeofdelete) {
+          //    totalfinalsize = totalsize - totalSizeofdelete;
+
+          //}
+          //else {
+
+          //    totalfinalsize = totalSizeofdelete-totalsize ;
+          //}
+
+          //alert("sdsdS"+totalfinalsize);
+        //  alert(totalsize);
+          if (totalsize > 3145728) {
+              alert("Total file size is greater than 3GB");
+              totalsize = 0;
+              $("#resume").val("");
+              return false;
+          }
+          else {
+              var addresstype = $("#Addresstype").val().toString();
+              $("#addrtype").val(addresstype);
+              //  var formData = new FormData($(this)[0]);
+
+              @*@foreach (var item in @Model.SupportingDocs)
+{
+    for(var k=0;k<=fileforDelete;k++)
+    {
+         if(@item.SupportingDocId==fileforDelete[k])
+         {
+             item.ServerURL = "1";
+             break;
+         }
+        
+    }
+}*@
+              @*  var totalArray = [
+            @for (int i = 0; i < listFromController.Count; i++)
+                
+            {
+               @: '@(listFromController[i].EmailAddress)',
+               
+                }
+           ]*@
+
+
+              $.ajax({
+                  url: '@Url.Action("StudentHome")',
+                  type: 'POST',
+                  data: JSON.stringify(@Model),
+                  dataType: 'json',
+                  contentType: 'application/json; charset=utf-8',
+                  success: function (data) {
+                      alert("Your data has been saved sucessfully");
+                      // window.location.assign("../Home/HomePage");
+                  },
+
+                  error: function () {
+                      alert('Please try it later on');
+                  }
+                  // TODO: process the server results
+
+              });
+
+
+              @*var fileUpload = $("#resume").get(0);
+          var files = fileUpload.files;
+
+          // Create FormData object
+          var fileData = new FormData();
+
+          // Looping over all files and add it to FormData object
+          for (var i = 0; i < files.length; i++) {
+              fileData.append(files[i].name, files[i]);
+          }
+
+          // Adding one more key to FormData object
+          fileData.append('studentdata', JSON.stringify(@Model));
+          $.ajax({
+              url: '@Url.Action("StudentHome")',
+              type: 'POST',
+              data: JSON.stringify(@Model),
+              dataType: 'json',
+              contentType: 'application/json; charset=utf-8',
+              success: function (data) {
+                  alert("Your data has been saved sucessfully");
+                  // window.location.assign("../Home/HomePage");
+              },
+              cache: false,
+              contentType: false,
+              processData: false,
+              error: function () {
+                  alert('Please try it later ');
+              }
+              // TODO: process the server results
+
+          });*@
+
+          }//else
+      } 
+    </script>
+    

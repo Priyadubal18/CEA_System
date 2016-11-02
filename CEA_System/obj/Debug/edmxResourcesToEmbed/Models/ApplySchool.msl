@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ApplyCollegeStoreContainer" CdmEntityContainer="Applycollegetest">
+    <EntitySetMapping Name="ApplyColleges">
+      <EntityTypeMapping TypeName="ApplyCollege.ApplyCollege">
+        <MappingFragment StoreEntitySet="ApplyCollege">
+          <ScalarProperty Name="ApplyCollegeId" ColumnName="ApplyCollegeId" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="CourseApplied" ColumnName="CourseApplied" />
+          <ScalarProperty Name="CollegeEmail" ColumnName="CollegeEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

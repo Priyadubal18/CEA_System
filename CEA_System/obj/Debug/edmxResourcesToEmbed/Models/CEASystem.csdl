@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TestEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="AddressStudents" EntityType="TestModel.AddressStudent" />
+    <EntitySet Name="ContactMes" EntityType="TestModel.ContactMe" />
+    <EntitySet Name="SchoolDatas" EntityType="TestModel.SchoolData" />
+    <EntitySet Name="Student_Profile" EntityType="TestModel.Student_Profile" />
+    <AssociationSet Name="FK_AddressStudent_Student_Profile" Association="TestModel.FK_AddressStudent_Student_Profile">
+      <End Role="Student_Profile" EntitySet="Student_Profile" />
+      <End Role="AddressStudent" EntitySet="AddressStudents" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AddressStudent">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="AptStreet" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="9" Unicode="true" FixedLength="false" />
+    <Property Name="Country" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="StudentId" Type="Int32" />
+    <NavigationProperty Name="Student_Profile" Relationship="TestModel.FK_AddressStudent_Student_Profile" FromRole="AddressStudent" ToRole="Student_Profile" />
+  </EntityType>
+  <EntityType Name="ContactMe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Message" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SchoolData">
+    <Key>
+      <PropertyRef Name="SchoolId" />
+    </Key>
+    <Property Name="SchoolId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="AddressSchool" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="SchoolCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="WebSite" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="SchoolType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="TutionFee" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="GraduateRate" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="RetentionRate" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="BestProgram" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ReviewLink" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="AcceptanceRate" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Comment" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CourseAvailable" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="SchoolName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Student_Profile">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="SSN" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CountryofBirth" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="AddressStudents" Relationship="TestModel.FK_AddressStudent_Student_Profile" FromRole="Student_Profile" ToRole="AddressStudent" />
+  </EntityType>
+  <Association Name="FK_AddressStudent_Student_Profile">
+    <End Role="Student_Profile" Type="TestModel.Student_Profile" Multiplicity="0..1" />
+    <End Role="AddressStudent" Type="TestModel.AddressStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Profile">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="AddressStudent">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
